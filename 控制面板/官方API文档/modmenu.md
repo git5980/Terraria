@@ -1,0 +1,226 @@
+# modmenu
+
+这是一个mod菜单，可以定制简单的菜单悬浮窗，也可以用于绘制，该接口使用imgui实现，可以创建多个悬浮窗实例
+
+## modmenu.create(title,options,function)
+
+`参数`:
+
+`title`: string
+
+`options`: object
+
+`function`: function
+
+`返回值`: 实例
+
+示例：
+
+```javascript
+modmenu.create('test mod',
+[
+    {
+        'type': 'text',
+        'val': 'text content...',
+        'size': 60,
+        'color': '#FF0000'
+    },
+    {
+        'type': 'select',
+        'item': [
+            'test',
+            'test2',
+            'test3'
+        ],
+        'val': 1
+    },
+    {
+        'type': 'category',
+        'title': 'category title'
+    },
+    {
+        'type': 'switch',
+        'title': 'switch1 title',
+        'val': true
+    },
+    {
+        'type': 'switch',
+        'title': 'switch2 title'
+    },
+    {
+        'type': 'button',
+        'title': 'button title'
+    },
+    {
+        'type': 'input',
+        'title': 'input title',
+        'val': 'default value'
+    },
+    {
+        'type': 'collapse',
+        'title': 'collapse title',
+        'item': [
+            {
+                'type': 'switch',
+                'title': 'switch title'
+            }
+        ],
+        'default': true
+    },
+    {
+        'type': 'slider',
+        'title': 'slider title',
+        'val': 88,
+        'min': 1,
+        'max': 100
+    },
+    {
+        'type': 'checkbox',
+        'title': 'checkbox title',
+        'val': true
+    },
+    {
+        'type': 'radio',
+        'title': 'radio title',
+        'item': [
+            'test',
+            'test2',
+            'test3'
+        ],
+        'val': 0
+    },
+    {
+        'type': 'image',
+        'width': 60,
+        'height': 60,
+        'val': 'https://jsonet.cdnipcs.com/test.jpg'
+    }
+]
+, {
+    onchange: function (result) {
+        console.log(JSON.stringify(result));
+        switch(result.id) {
+            case '1':
+                console.log('ok');
+                break;
+        }
+    }
+})
+```
+
+## 自定义控件id
+
+你可以给每个控件自定义id，id不能重复，例如按钮的参数
+
+```javascript
+{
+    'id': 'test',
+    'type': 'button',
+    'title': 'button title'
+}
+```
+
+## 多个tab实例
+
+```javascript
+modmenu.create('test2', [
+    {
+        'type': 'tab',
+        'item': [
+            {
+                'title': 'tab1',
+                'item': [
+                    {
+                        'type': 'text',
+                        'val': 'tab1'
+                    }
+                ]
+            },
+            {
+                'title': 'tab2',
+                'item': [
+                    {
+                        'type': 'text',
+                        'val': 'tab2'
+                    }
+                ]
+            }
+        ],
+        'default': 1
+    }
+], {
+    onchange: function (result) {
+        console.log(JSON.stringify(result))
+    }
+})
+```
+
+## [实例].close()
+
+示例：
+
+```javascript
+var menu1 = modmenu.create('test mod', [], {
+    onchange: function (result) {
+    }
+});
+setTimeout(function () {
+    menu1.close();
+}, 2000);
+```
+
+## [实例].state()
+
+显示悬浮窗底部状态栏，imgui相关的信息
+
+## [实例].size(width,height)
+
+调整悬浮窗大小，px值
+
+`参数`:
+
+`width`: int
+
+`height`: int
+
+## [实例].position(type,x,y)
+
+设置悬浮窗默认位置，type为1到9对应9个默认位置，x和y是px值
+
+`参数`:
+
+`type`: int
+
+`x`: int
+
+`y`: int
+
+## [实例].icon(img)
+
+设置悬浮窗图标图片，img为图片base64字符串或者是图片url地址
+
+`参数`:
+
+`img`: string
+
+## [实例].edgeHiden(enable)
+
+icon图标拖动到屏幕边缘自动隐藏，默认不开启
+
+`参数`:
+
+`enable`: boolean
+
+## [实例].update(id,value)
+
+动态更改菜单控件的值
+
+`参数`:
+
+`id`: string
+
+`value`: string/number/boolean
+
+## modmenu.closeAll()
+
+关闭所有创建的mod菜单

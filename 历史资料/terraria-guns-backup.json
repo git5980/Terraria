@@ -1,0 +1,51 @@
+{
+  "note": "泰拉瑞亚 (com.xd.terraria) 背包远程武器清除 — 删除前完整备份。可依 slot+type+stack+prefix 重建物品。",
+  "device": "OnePlus PKR110 / Android 16 / com.xd.terraria",
+  "created": "2026-09-16",
+  "reason": "useAmmo != 0 且背包中不存在 ammo == useAmmo 的弹药物品",
+  "ammoPresentInInventory": {
+    "23": "凝胶 (Gel) x51",
+    "71": "铜币/银币/金币/铂金币 (Coins)"
+  },
+  "kept": [
+    { "slot": 6, "type": 905, "name": "钱币枪 (Coin Gun)", "why": "需要铜币#71，背包中有钱币" }
+  ],
+  "removed": [
+    { "slot": 8,  "type": 3930, "name": "喜庆礼炮Mk2",     "stack": 1, "prefix": 0, "damage": 50,  "needAmmo": 771 },
+    { "slot": 10, "type": 3475, "name": "星旋机枪",         "stack": 1, "prefix": 0, "damage": 50,  "needAmmo": 97 },
+    { "slot": 11, "type": 1946, "name": "雪人炮",           "stack": 1, "prefix": 0, "damage": 67,  "needAmmo": 771 },
+    { "slot": 12, "type": 2797, "name": "外星霰弹枪",       "stack": 1, "prefix": 0, "damage": 45,  "needAmmo": 97 },
+    { "slot": 13, "type": 1929, "name": "链式机枪",         "stack": 1, "prefix": 0, "damage": 38,  "needAmmo": 97 },
+    { "slot": 14, "type": 679,  "name": "战术霰弹枪",       "stack": 1, "prefix": 0, "damage": 36,  "needAmmo": 97 },
+    { "slot": 15, "type": 1255, "name": "维纳斯万能枪",     "stack": 1, "prefix": 0, "damage": 50,  "needAmmo": 97 },
+    { "slot": 16, "type": 1265, "name": "乌兹冲锋枪",       "stack": 1, "prefix": 0, "damage": 30,  "needAmmo": 97 },
+    { "slot": 17, "type": 3007, "name": "飞镖手枪",         "stack": 1, "prefix": 0, "damage": 28,  "needAmmo": 283 },
+    { "slot": 18, "type": 533,  "name": "巨兽鲨",           "stack": 1, "prefix": 0, "damage": 25,  "needAmmo": 97 },
+    { "slot": 19, "type": 534,  "name": "霰弹枪",           "stack": 1, "prefix": 0, "damage": 24,  "needAmmo": 97 },
+    { "slot": 20, "type": 3788, "name": "玛瑙爆破枪",       "stack": 1, "prefix": 0, "damage": 24,  "needAmmo": 97 },
+    { "slot": 21, "type": 2270, "name": "鳄鱼机关枪",       "stack": 1, "prefix": 0, "damage": 21,  "needAmmo": 97 },
+    { "slot": 22, "type": 434,  "name": "发条式突击步枪",   "stack": 1, "prefix": 0, "damage": 17,  "needAmmo": 97 },
+    { "slot": 23, "type": 4060, "name": "超级星星枪炮",     "stack": 1, "prefix": 0, "damage": 60,  "needAmmo": 75 },
+    { "slot": 24, "type": 219,  "name": "凤凰爆破枪",       "stack": 1, "prefix": 0, "damage": 30,  "needAmmo": 97 },
+    { "slot": 25, "type": 4703, "name": "四管霰弹枪",       "stack": 1, "prefix": 0, "damage": 14,  "needAmmo": 97 },
+    { "slot": 26, "type": 197,  "name": "星星炮",           "stack": 1, "prefix": 0, "damage": 55,  "needAmmo": 75 },
+    { "slot": 27, "type": 266,  "name": "沙枪",             "stack": 1, "prefix": 0, "damage": 30,  "needAmmo": 169 },
+    { "slot": 28, "type": 164,  "name": "手枪",             "stack": 1, "prefix": 0, "damage": 26,  "needAmmo": 97 },
+    { "slot": 29, "type": 2269, "name": "左轮手枪",         "stack": 1, "prefix": 0, "damage": 20,  "needAmmo": 97 },
+    { "slot": 30, "type": 5117, "name": "气喇叭",           "stack": 1, "prefix": 0, "damage": 20,  "needAmmo": 97 },
+    { "slot": 31, "type": 964,  "name": "三发猎枪",         "stack": 1, "prefix": 0, "damage": 14,  "needAmmo": 97 },
+    { "slot": 32, "type": 98,   "name": "迷你鲨",           "stack": 2, "prefix": 0, "damage": 6,   "needAmmo": 97 },
+    { "slot": 33, "type": 96,   "name": "火枪",             "stack": 2, "prefix": 0, "damage": 31,  "needAmmo": 97 },
+    { "slot": 34, "type": 1870, "name": "红莱德枪",         "stack": 1, "prefix": 0, "damage": 20,  "needAmmo": 97 },
+    { "slot": 35, "type": 800,  "name": "夺命枪",           "stack": 1, "prefix": 0, "damage": 19,  "needAmmo": 97 },
+    { "slot": 36, "type": 95,   "name": "燧发枪",           "stack": 2, "prefix": 0, "damage": 13,  "needAmmo": 97 },
+    { "slot": 37, "type": 930,  "name": "信号枪",           "stack": 1, "prefix": 0, "damage": 2,   "needAmmo": 931 },
+    { "slot": 39, "type": 779,  "name": "环境改造枪",       "stack": 1, "prefix": 0, "damage": -1,  "needAmmo": 780 },
+    { "slot": 47, "type": 3008, "name": "飞镖步枪",         "stack": 1, "prefix": 0, "damage": 52,  "needAmmo": 283 },
+    { "slot": 51, "type": 1254, "name": "狙击步枪",         "stack": 1, "prefix": 0, "damage": 200, "needAmmo": 97 },
+    { "slot": 54, "type": 1254, "name": "狙击步枪",         "stack": 1, "prefix": 0, "damage": 200, "needAmmo": 97 },
+    { "slot": 55, "type": 1553, "name": "太空海豚机枪",     "stack": 1, "prefix": 0, "damage": 85,  "needAmmo": 97 },
+    { "slot": 56, "type": 1319, "name": "雪球炮",           "stack": 1, "prefix": 0, "damage": 10,  "needAmmo": 949 },
+    { "slot": 57, "type": 3107, "name": "钉枪",             "stack": 1, "prefix": 0, "damage": 85,  "needAmmo": 3108 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "_说明": [
+    "自定义增删改模板：改完后运行 python3 build_dataset.py 重新生成 out/ 下的数据集。",
+    "用法：把本文件复制为 custom_items.json，再往 items 数组里写规则（现在为空，保持数据原样）。",
+    "支持四种 _op：patch 修改 / add 新增 / delete 删除，字段名与 terraria_items_all.json 一致。"
+  ],
+  "_格式示例": [
+    {"_op": "patch", "id": 4956, "damage": 250, "BestiaryNotes": "按 ID 修改"},
+    {"_op": "patch", "cn": "泰拉刃", "rare": 11, "注释": "也可以按中文名定位"},
+    {"_op": "add", "id": 9001, "cn": "示例武器·测试剑", "en": ["MyTestSword"], "category": "武器", "subtype": "近战", "damage": 123, "useTime": 8, "rare": 9, "value": 5000000, "maxStack": 1, "melee": true, "autoReuse": true, "注释": "id 可省略，省略时自动取当前最大 ID+1"},
+    {"_op": "delete", "id": 1234, "注释": "从数据集剔除（不影响游戏本体）"}
+  ],
+  "items": []
+}

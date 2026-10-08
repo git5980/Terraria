@@ -1,0 +1,69 @@
+{
+  "_说明": [
+    "泰拉瑞亚事件模板：event_ops.js 里 CONFIG.action 写模板名即可触发/停止，可自行增删。",
+    "set  = 直接写静态字段（键为 简名.字段，如 Main.bloodMoon）；call = 直接调方法（target 为简名）。",
+    "简名映射：Main→Terraria.Main；Sandstorm/BirthdayParty/LanternNight/DD2Event/CreditsRollEvent/CultistRitual→Terraria.GameContent.Events.*；WorldGen→Terraria.WorldGen。",
+    "⚠️ 这些操作会真实改变你的世界：入侵/血月/日食会刷怪。默认脚本 enabled=false 只扫描，不会触发。",
+    "⚠️ 值类型参数：整数写整数，浮点写小数，布尔写 true/false；Nullable<float> 传 \"null\" 表示空。"
+  ],
+  "字段现况_20260917": {
+    "bloodMoon": false, "eclipse": false, "pumpkinMoon": false, "snowMoon": false,
+    "invasionType": 0, "invasionSize": 0, "raining": false, "rainTime": 0, "maxRaining": 0,
+    "slimeRain": false, "dayTime": true, "moonPhase": 3, "hardMode": false,
+    "Sandstorm.Happening": false, "Sandstorm.TimeLeft": 0, "Sandstorm.Severity": 0.231,
+    "DD2Event.Ongoing": false, "BirthdayParty.ManualParty": false, "LanternNight.ManualLanterns": false,
+    "halloween": false, "xMas": false, "forceHalloweenForToday": false, "forceXMasForToday": false
+  },
+  "模板": {
+    "血月-开":   { "set": { "Main.bloodMoon": true } },
+    "血月-关":   { "set": { "Main.bloodMoon": false } },
+    "日食-开":   { "set": { "Main.eclipse": true } },
+    "日食-关":   { "set": { "Main.eclipse": false } },
+    "南瓜月-开": { "set": { "Main.pumpkinMoon": true } },
+    "南瓜月-关": { "set": { "Main.pumpkinMoon": false } },
+    "霜月-开":   { "set": { "Main.snowMoon": true } },
+    "霜月-关":   { "set": { "Main.snowMoon": false } },
+
+    "哥布林入侵": { "call": [ { "target": "Main", "method": "StartInvasion", "args": [1] } ] },
+    "雪人军团":   { "call": [ { "target": "Main", "method": "StartInvasion", "args": [2] } ] },
+    "海盗入侵":   { "call": [ { "target": "Main", "method": "StartInvasion", "args": [3] } ] },
+    "火星暴乱":   { "call": [ { "target": "Main", "method": "StartInvasion", "args": [4] } ] },
+    "入侵-停":    { "set": { "Main.invasionType": 0, "Main.invasionSize": 0, "Main.invasionDelay": 0, "Main.invasionWarn": 0 } },
+
+    "撒旦军队T1": { "call": [ { "target": "DD2Event", "method": "StartInvasion", "args": [1] } ] },
+    "撒旦军队T2": { "call": [ { "target": "DD2Event", "method": "StartInvasion", "args": [2] } ] },
+    "撒旦军队T3": { "call": [ { "target": "DD2Event", "method": "StartInvasion", "args": [3] } ] },
+    "撒旦军队-停": { "call": [ { "target": "DD2Event", "method": "StopInvasion", "args": [0] } ] },
+    "撒旦军队-清怪": { "call": [ { "target": "DD2Event", "method": "ClearAllDD2HostilesInGame", "args": [] } ] },
+    "召唤双足飞龙Betsy": { "call": [ { "target": "DD2Event", "method": "SummonBetsy", "args": [] } ] },
+
+    "下雨":     { "call": [ { "target": "Main", "method": "StartRain", "args": [1, "null", 0] } ] },
+    "停雨":     { "call": [ { "target": "Main", "method": "StopRain", "args": [1] } ] },
+    "沙尘暴":   { "call": [ { "target": "Sandstorm", "method": "StartSandstorm", "args": [] } ] },
+    "沙尘暴-停": { "call": [ { "target": "Sandstorm", "method": "StopSandstorm", "args": [] } ] },
+    "史莱姆雨": { "call": [ { "target": "Main", "method": "StartSlimeRain", "args": [1] } ] },
+    "史莱姆雨-停": { "call": [ { "target": "Main", "method": "StopSlimeRain", "args": [1] } ] },
+
+    "派对切换":   { "call": [ { "target": "BirthdayParty", "method": "ToggleManualParty", "args": [] } ] },
+    "灯笼夜切换": { "call": [ { "target": "LanternNight", "method": "ToggleManualLanterns", "args": [] } ] },
+    "制作人员名单": { "call": [ { "target": "CreditsRollEvent", "method": "SetRemainingTimeDirect", "args": [3600] } ] },
+    "原木精灵-夜晚": { "call": [ { "target": "WorldGen.mysticLogsEvent", "method": "StartNight", "args": [] } ] },
+
+    "万圣节-今天": { "set": { "Main.forceHalloweenForToday": true } },
+    "万圣节-永久": { "set": { "Main.forceHalloweenForever": true } },
+    "圣诞节-今天": { "set": { "Main.forceXMasForToday": true } },
+    "圣诞节-永久": { "set": { "Main.forceXMasForever": true } },
+    "节日-全关":  { "set": { "Main.forceHalloweenForToday": false, "Main.forceXMasForToday": false, "Main.forceHalloweenForever": false, "Main.forceXMasForever": false } },
+
+    "白天": { "set": { "Main.dayTime": true, "Main.time": 0 } },
+    "夜晚": { "set": { "Main.dayTime": false, "Main.time": 0 } },
+    "月相+1": { "set": { "Main.moonPhase": 4 } },
+
+    "全部停止": { "set": {
+      "Main.bloodMoon": false, "Main.eclipse": false, "Main.pumpkinMoon": false, "Main.snowMoon": false,
+      "Main.invasionType": 0, "Main.invasionSize": 0, "Main.invasionDelay": 0,
+      "Main.raining": false, "Main.rainTime": 0, "Main.maxRaining": 0, "Main.slimeRain": false,
+      "Sandstorm.Happening": false, "Sandstorm.TimeLeft": 0, "DD2Event.Ongoing": false
+    } }
+  }
+}
